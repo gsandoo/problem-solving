@@ -6,9 +6,9 @@ import java.io.InputStreamReader;
 
 public class 합이같은부분집합 {
 
-    public static String answer = "NO";
-    public static boolean flag = false;
-    public static int N, total = 0;
+    static String answer = "NO";
+    static boolean flag = false;
+    static int N, total = 0;
 
     public static void dfs(int L, int sum, int[]arr) {
         if (flag) return;
