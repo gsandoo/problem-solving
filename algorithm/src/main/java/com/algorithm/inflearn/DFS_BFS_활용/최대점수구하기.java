@@ -11,16 +11,7 @@ public class 최대점수구하기 {
     static List[] list;
     static StringTokenizer st ;
     public static void dfs(int l, int sum, int times){
-        //1. 시간을 넘겼을 때 ->
-        if (times > m) return;
-        //2. 시간을 넘기지 않았을 때 ->
-        if (l == n) {
-            answer = Math.max(answer, sum);
-        }
-        else{
-            dfs(l+1, sum + (int)list[l].get(0), times + (int)list[l].get(1));
-            dfs(l+1, sum, times );
-        }
+
     }
 
     public static void main(String[] args) throws IOException {

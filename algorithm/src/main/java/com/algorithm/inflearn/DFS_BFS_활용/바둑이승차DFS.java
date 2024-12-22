@@ -3,29 +3,25 @@ package com.algorithm.inflearn.DFS_BFS_활용;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Map;
 import java.util.StringTokenizer;
 
 public class 바둑이승차DFS {
 
-    static int answer, n, m;
+    static int answer = Integer.MIN_VALUE, n, m;
     static int[] dogs;
 
-    public static void dfs(int level , int sum, int[] dogs){
-        // 1. 부분 집합 생성 x -> 값이 n 보다 큰 경우
-        // 2. 부분 집합 생성 ->  값이 n 보다 작은 경우
-        // 3. 부분 집합 생성 중 -> 값을 더한다 / 값을 더하지 않는다
+    public static void dfs(int level, int sum, int[] dogs){
 
-        // 1번
-        if (sum > n){return;}
-        // 2번
+        // sum이 259를 넘으면
+        if (sum > n) return;
+        // 말단 노드까지 더했으면
         if (level == m){
-            answer = Math.max(answer, sum);
+            answer =  Math.max(answer, sum);
         }
-        // 3번
+        // dfs 계속 도는 경우
         else{
-            dfs(level + 1, sum+ dogs[level], dogs);
-            dfs(level + 1, sum, dogs);
+            dfs(level+1, sum + dogs[level], dogs); // 다음 값을 더한다
+            dfs(level+1, sum, dogs); // 다음 값을 더하지 않는다
         }
     }
 
@@ -37,14 +33,13 @@ public class 바둑이승차DFS {
         n = Integer.parseInt(st.nextToken());
         m = Integer.parseInt(st.nextToken());
 
-        dogs = new int[m+1];
+        dogs = new int[m];
 
-        for (int i = 0 ; i < m ; i++) {
-            int x = Integer.parseInt(br.readLine());
-            dogs[i] = x;
+        for (int i = 0 ; i < dogs.length ; i++){
+            dogs[i] = Integer.parseInt(br.readLine());
         }
 
-        dfs(0,0,  dogs);
+        dfs(0,0, dogs);
         System.out.println(answer);
     }
 }
