@@ -6,23 +6,20 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 public class 동전교환 {
-    static int N,M, count, answer = Integer.MAX_VALUE;
+    static int N,M, answer = Integer.MAX_VALUE;
     static  int[] arr;
 
-    public static void dfs(int level, int[] arr, int sum, int count){
+    public static void dfs(int level, int[] arr, int sum){
+        if (level >= answer) return;
         if (sum > M) return;
-        if (level == N) return;
         if (sum == M){
-            answer = Math.min(answer,count);
-            count = 0;
-            sum = 0;
+            answer = Math.min(answer,level);
         }
         else{
-            sum += arr[level];
-            dfs(level+1, arr, sum+arr[level], count+1);
-            dfs(level+1, arr, sum, count+1);
+            for (int i = 0 ; i < arr.length; i++){
+                dfs(level+1, arr, sum+arr[i]);
+            }
         }
-
     }
 
     public static void main(String[] args) throws IOException {
@@ -38,8 +35,8 @@ public class 동전교환 {
         }
 
         M = Integer.parseInt(br.readLine());
-        count = 0;
-        dfs(0, arr, 0, count);
-        System.out.println(count);
+
+        dfs(0, arr, 0);
+        System.out.println(answer);
     }
 }
