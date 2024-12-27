@@ -33,8 +33,8 @@ public class 순열구하기 {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         st = new StringTokenizer(br.readLine());
 
-        n = Integer.parseInt(st.nextToken());
-        m = Integer.parseInt(st.nextToken());
+        n = Integer.parseInt(st.nextToken()); //
+        m = Integer.parseInt(st.nextToken()); //
 
         arr = new int[n];
         visited = new int[n];

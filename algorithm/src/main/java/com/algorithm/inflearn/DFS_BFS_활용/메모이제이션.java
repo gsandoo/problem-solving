@@ -21,7 +21,7 @@ public class 메모이제이션 {
         if (visited[n][r] > 0) return visited[n][r];
         if (n == r || r == 0) return 1;
         else{
-            return visited[n][r] = dfs(n-1,r-1)+dfs(n-1,r);
+            return visited[n][r] = dfs_memo(n-1,r-1)+dfs_memo(n-1,r);
         }
     }
 
@@ -36,12 +36,10 @@ public class 메모이제이션 {
         visited = new int[35][35]; // 요구사항
 
         long beforeTime = System.currentTimeMillis();
-        System.out.println("dfs : " + dfs(n,r));
+        System.out.println("dfs: " + dfs(n,r));
         long afterTime = System.currentTimeMillis();
         long time = (afterTime-beforeTime);
         System.out.println("[메모이제이션 전]dfs 수행 시간: " + time + "ms");
-
-        System.out.println();
 
         long memo_beforeTime = System.currentTimeMillis();
         System.out.println("dfs with memo: " + dfs_memo(n,r));
