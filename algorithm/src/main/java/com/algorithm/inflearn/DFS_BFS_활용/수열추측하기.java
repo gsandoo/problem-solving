@@ -21,7 +21,7 @@ public class 수열추측하기 {
         if (flag) return ;
         if(level == n){
             if (sum == r){
-                for (int x : answer) System.out.println(x+ " ");
+                for (int x : answer) System.out.print(x+ " ");
                 flag = true;
             }
         }else{
