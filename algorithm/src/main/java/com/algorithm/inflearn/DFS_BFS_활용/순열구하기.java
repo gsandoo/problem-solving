@@ -13,16 +13,16 @@ public class 순열구하기 {
     static StringTokenizer st;
 
     public static void dfs(int level, int[] arr){
-        if(level == m) { // 2
+        if(level == m) {
             for (int x: pm)System.out.print(x+" ");
             System.out.println();
         }else{
             for (int i = 0; i< arr.length;i++){
                 if(visited[i] == 0) {
-                    pm[level] = arr[i]; // 3
-                    visited[i] = 1; // 1 0 0
-                    dfs(level+1, arr); //
-                    visited[i] = 0;
+                    pm[level] = arr[i];
+                    visited[i] = 1;
+                    dfs(level+1, arr);
+                    visited[i] = 0; // 중복 방지
                 }
             }
         }
@@ -33,8 +33,8 @@ public class 순열구하기 {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         st = new StringTokenizer(br.readLine());
 
-        n = Integer.parseInt(st.nextToken()); //
-        m = Integer.parseInt(st.nextToken()); //
+        n = Integer.parseInt(st.nextToken());
+        m = Integer.parseInt(st.nextToken());
 
         arr = new int[n];
         visited = new int[n];
