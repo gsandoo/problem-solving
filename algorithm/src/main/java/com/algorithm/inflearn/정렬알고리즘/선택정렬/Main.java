@@ -1,4 +1,4 @@
-package com.algorithm.inflearn.section7.선택정렬;
+package com.algorithm.inflearn.정렬알고리즘.선택정렬;
 
 import java.io.BufferedReader;
 import java.io.IOException;

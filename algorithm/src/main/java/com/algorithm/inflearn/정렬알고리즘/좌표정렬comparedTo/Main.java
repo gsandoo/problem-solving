@@ -1,4 +1,4 @@
-package com.algorithm.inflearn.section7.좌표정렬comparedTo;
+package com.algorithm.inflearn.정렬알고리즘.좌표정렬comparedTo;
 
 import java.io.BufferedReader;
 import java.io.IOException;
