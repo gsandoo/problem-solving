@@ -13,48 +13,49 @@ public class 마법사상어와비바라기 {
     static StringTokenizer st;
 
     static int[][] dis = {
-            {0, -1},   // ←
-            {-1, -1},  // ↖
-            {-1, 0},   // ↑
-            {-1, 1},   // ↗
-            {0, 1},    // →
-            {1, 1},    // ↘
-            {1, 0},    // ↓
-            {1, -1}    // ↙
+            {0, -1},
+            {-1, -1},
+            {-1, 0},
+            {-1, 1},
+            {0, 1},
+            {1, 1},
+            {1, 0},
+            {1, -1}
     };
 
     public static void simulation(int d, int s) {
-        // 1. 구름 이동
         visited = new boolean[N][N];
         boolean[][] newCloud = new boolean[N][N];
 
-        for (int x = 0; x < N; x++) {
-            for (int y = 0; y < N; y++) {
-                if (cloud[x][y]) {
-                    int nx = (x + dis[d][0] * s + N * 100) % N;
-                    int ny = (y + dis[d][1] * s + N * 100) % N;
+        // 1. 구름 이동
+        for (int x = 0 ; x < N ; x ++) {
+            for (int y = 0 ; y < N; y ++){
+                if (cloud[x][y]){
+                    // 모듈러 계산 (arr 확장 가능)
+                    int nx = (x + dis[d][0]*s + N *100 ) % N;
+                    int ny = (y + dis[d][1]*s + N *100 ) % N;
 
                     newCloud[nx][ny] = true;
-                    arr[nx][ny]++; // 물의 양 증가
+                    //2. 물 증가
+                    arr[nx][ny] ++;
                 }
             }
         }
+        //3. 구름 사라진다
         cloud = newCloud;
 
-        // 2. 물복사 마법
-        for (int x = 0; x < N; x++) {
-            for (int y = 0; y < N; y++) {
-                if (cloud[x][y]) {
+        //4. 물복사 버그
+        for (int x = 0 ; x < N ; x++){
+            for (int y = 0 ; y < N ; y++){
+                if (cloud[x][y]){
                     visited[x][y] = true;
                     int waterCount = 0;
 
-                    // 대각선 방향만 탐색
-                    for (int i = 1; i < 8; i += 2) {
+                    for (int i = 1 ; i < 8 ; i+=2){
                         int nx = x + dis[i][0];
                         int ny = y + dis[i][1];
-
-                        if (nx >= 0 && ny >= 0 && nx < N && ny < N && arr[nx][ny] > 0) {
-                            waterCount++;
+                        if (nx >= 0 && ny >= 0 && nx < N && ny < N && arr[nx][ny] > 0){
+                            waterCount ++;
                         }
                     }
                     arr[x][y] += waterCount;
@@ -62,16 +63,17 @@ public class 마법사상어와비바라기 {
             }
         }
 
-        // 3. 새로운 구름 생성 및 물 감소
+        //5. 새로운 구름 생성 , -2 적용
         newCloud = new boolean[N][N];
-        for (int x = 0; x < N; x++) {
-            for (int y = 0; y < N; y++) {
-                if (!visited[x][y] && arr[x][y] >= 2) {
+        for (int x = 0; x < N ; x++){
+            for (int y = 0; y < N ; y++){
+                if (!visited[x][y] && arr[x][y] >=2){
                     newCloud[x][y] = true;
                     arr[x][y] -= 2;
                 }
             }
         }
+
         cloud = newCloud;
     }
 
