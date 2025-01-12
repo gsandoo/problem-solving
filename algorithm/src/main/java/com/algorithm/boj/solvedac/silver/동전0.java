@@ -1,4 +1,4 @@
-package com.algorithm.boj.ac.silver;
+package com.algorithm.boj.solvedac.silver;
 
 import java.io.BufferedReader;
 import java.io.IOException;

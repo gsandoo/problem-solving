@@ -35,6 +35,7 @@ public class 마법사상어와비바라기 {
                     int nx = (x + dis[d][0]*s + N *100 ) % N;
                     int ny = (y + dis[d][1]*s + N *100 ) % N;
 
+                    visited[nx][ny] = true;
                     newCloud[nx][ny] = true;
                     //2. 물 증가
                     arr[nx][ny] ++;
@@ -48,7 +49,6 @@ public class 마법사상어와비바라기 {
         for (int x = 0 ; x < N ; x++){
             for (int y = 0 ; y < N ; y++){
                 if (cloud[x][y]){
-                    visited[x][y] = true;
                     int waterCount = 0;
 
                     for (int i = 1 ; i < 8 ; i+=2){
