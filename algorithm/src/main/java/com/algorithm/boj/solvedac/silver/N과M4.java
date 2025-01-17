@@ -5,6 +5,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
+
+// tier: silver 3
+// link:https://www.acmicpc.net/problem/15652
 public class N과M4 {
 
     static int N, M;
