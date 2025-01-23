@@ -1,4 +1,4 @@
-package com.algorithm.boj.solvedac.bronze;
+package bronze;
 
 public class 개 {
     public static void main(String[] args) {

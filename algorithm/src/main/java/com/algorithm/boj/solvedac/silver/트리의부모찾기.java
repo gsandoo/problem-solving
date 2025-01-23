@@ -17,7 +17,6 @@ public class 트리의부모찾기 {
     static int N;
     static StringTokenizer st;
 
-
     public static void dfs(int L){
         visited[L] = true;
         for (int x: node[L]){
@@ -28,20 +27,19 @@ public class 트리의부모찾기 {
         }
     }
 
-
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         N= Integer.parseInt(br.readLine());
 
-        node = new ArrayList[N+1]; //0~7
+        node = new ArrayList[N+1];
         visited = new boolean[N+1];
         parent = new int[N+1];
 
-        for (int i = 1 ; i <= N; i++){ // 1~7
+        for (int i = 1 ; i <= N; i++){
             node[i] = new ArrayList();
         }
 
-        for (int i =0 ; i < N-1; i++){ // 7번
+        for (int i =0 ; i < N-1; i++){
             st = new StringTokenizer(br.readLine());
             int x = Integer.parseInt(st.nextToken());
             int y = Integer.parseInt(st.nextToken());
@@ -51,10 +49,8 @@ public class 트리의부모찾기 {
 
         dfs(1);
 
-
         for (int i = 2; i <= N; i++) {
             System.out.println(parent[i]);
         }
-
     }
 }
