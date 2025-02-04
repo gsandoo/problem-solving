@@ -7,15 +7,22 @@ import java.io.InputStreamReader;
 public class 계단오르기 {
     static int [] dp, arr;
     static int N;
-    public static int solution(int [] dp){
-        int answer = 0;
+    public static int solution(int [] arr){
 
+        // 시작점
         dp[0] = arr[0];
-        if (N >= 2) dp[1] = arr[0]+arr[1];
+        if (N >= 2) {
+            dp[1] = arr[0] + arr[1];
+            if ( N >= 3) {
+                dp[2] = Math.max(arr[2] + arr[1], arr[2]+arr[0]);
+                for (int i = 3 ; i < N ; i ++){
+                    dp[i] = Math.max(arr[i]+ dp[i-2] , arr[i]+ dp[i-3] + arr[i-1]);
+                }
+            }
+        }
 
-        dp[N] = Math.max(dp[N-2], dp[N-3]+arr[N-1])+ arr[N];
-        answer = dp[N];
-        return answer;
+
+        return dp[N-1];
     }
 
     public static void main(String[] args) throws IOException {
