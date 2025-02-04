@@ -1,4 +1,4 @@
-package com.algorithm.boj.silver;
+package com.algorithm.boj.silver.bfsdfs;
 
 import java.util.LinkedList;
 import java.util.Queue;

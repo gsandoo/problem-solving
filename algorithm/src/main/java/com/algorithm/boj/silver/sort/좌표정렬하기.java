@@ -1,4 +1,4 @@
-package com.algorithm.boj.silver;
+package com.algorithm.boj.silver.sort;
 
 import java.io.BufferedReader;
 import java.io.IOException;

@@ -1,4 +1,4 @@
-package com.algorithm.boj.silver;
+package com.algorithm.boj.silver.bfsdfs;
 
 import java.io.BufferedReader;
 import java.io.IOException;
