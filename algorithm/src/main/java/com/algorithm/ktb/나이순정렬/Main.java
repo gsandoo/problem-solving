@@ -22,7 +22,7 @@ class Profile implements Comparable<Profile> {
 }
 
 
-public class Solution {
+class Main {
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -39,7 +39,7 @@ public class Solution {
         Collections.sort(arr);
 
         for (int i = 0 ; i < N ; i++){
-            System.out.println(arr.get(i));
+            System.out.println(arr.get(i).age + " " + arr.get(i).name);
         }
     }
 }
