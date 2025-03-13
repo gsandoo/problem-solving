@@ -5,7 +5,6 @@ import java.io.InputStreamReader;
 
 public class Solution {
 
-    static int[] arr = {7, 0, 8, 2, 8, 3, 1, 5, 7, 6, 2};
     static int[][] keypad = {
             {3, 1}, // 0번
             {0, 0}, {0, 1}, {0, 2},
@@ -20,7 +19,7 @@ public class Solution {
         int[] leftPos = {3, 0};
         int[] rightPos = {3, 2};
 
-        for (int n : arr){
+        for (int n : numbers){
             int[] targetPos = keypad[n];
 
             if (n == 1 || n == 4 || n == 7) {
@@ -33,9 +32,7 @@ public class Solution {
             }
 
             // 중앙 2,5,8 일 때
-            // 3 = {0,2}
-            // 4 = {1,0}
-            // 5 = {1,1}
+
 
             else{
                 int left = Math.abs(leftPos[0] - targetPos[0]) + Math.abs(leftPos[1] - targetPos[1]);
@@ -54,10 +51,4 @@ public class Solution {
         return sb.toString();
     }
 
-    public static void main(String[] args) {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
-        System.out.println(solution(arr, "left"));
-
-    }
 }
