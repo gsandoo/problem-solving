@@ -7,10 +7,13 @@ import java.io.InputStreamReader;
 class Main {
 
     public static String fizzbuzz(String[] x){
-        if (Integer.parseInt(x[2] + 1)%3 == 0 && Integer.parseInt(x[2] + 1)%5 == 0) return "FizzBuzz";
-        else if (Integer.parseInt(x[2] + 1)%3 == 0 && Integer.parseInt(x[2] + 1)%5 != 0) return "Fizz";
-        else if (Integer.parseInt(x[2] + 1)%3 != 0 && Integer.parseInt(x[2] + 1)%5 == 0) return "Buzz";
-        else return (x[2] + 1);
+        for (String s: x) {
+            char[] c = s.toCharArray();
+            if (c[0] < 'a') {
+
+            }
+        }
+        return "";
     }
     public static void main(String[] args)throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
