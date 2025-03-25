@@ -15,24 +15,40 @@ public class Main {
         int N = Integer.parseInt(st.nextToken());
         int M = Integer.parseInt(st.nextToken());
 
-        HashMap<Integer,String> hm = new HashMap<>();
+        // arraylist 풀이 => 시간 초과
+//        ArrayList<String> arr = new ArrayList<>();
+//        for (int i = 0 ; i < N; i++) arr.add(br.readLine());
+//
+//        StringBuilder sb = new StringBuilder();
+//        for (int i = 0 ; i < M ; i++){
+//            String line = br.readLine();
+//            if (line.toCharArray()[0] < 'A') sb.append(arr.get(Integer.parseInt(line)-1) + '\n');
+//            else sb.append(String.valueOf(arr.lastIndexOf(line)+1) + '\n');
+//        }
+//
+//        System.out.println(sb);
+//    }
 
-        for (int i = 1 ; i <= N; i++) hm.put(i,br.readLine());
+        StringBuilder sb = new StringBuilder();
+        HashMap<Integer, String> hash1 = new HashMap<Integer, String>();
+        HashMap<String, Integer> hash2 = new HashMap<String, Integer>();
 
-        ArrayList<String> arr = new ArrayList<>();
-        for (int i = 0 ; i < M; i ++) {
-            String input = br.readLine();
-            // 숫자라면
-            if (input.toCharArray()[0] < 'A' || input.toCharArray()[input.toCharArray().length-1] < 'A'){
-                arr.add(hm.get(Integer.parseInt(input)));
+
+        for(int i = 1; i <= N; i++) {
+            String S = br.readLine();
+            hash1.put(i, S);
+            hash2.put(S, i);
+        }
+
+        for(int i = 0; i < M; i++) {
+            String S = br.readLine();
+            //입력값이 번호인지 포켓몬이름인지 판별
+            if(49 <= S.charAt(0) && S.charAt(0) <= 57) {
+                sb.append(hash1.get(Integer.parseInt(S))).append("\n");
             }else {
-                for (HashMap.Entry<Integer, String> entry : hm.entrySet()) {
-                    if (entry.getValue().equals(input)) {
-                        arr.add(String.valueOf(entry.getKey()));
-                    }
-                }
+                sb.append(hash2.get(S)).append("\n");
             }
         }
-        for (String x : arr) System.out.println(x);
+        System.out.println(sb);
     }
 }
