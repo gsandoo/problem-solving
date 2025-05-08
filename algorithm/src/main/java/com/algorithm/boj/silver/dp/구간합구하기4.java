@@ -1,10 +1,12 @@
 package com.algorithm.boj.silver.dp;
 
+import com.algorithm.oriented_programming2023_2.linkedList.Point;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-import java.util.StringTokenizer;
+import java.util.*;
 
 // https://www.acmicpc.net/problem/11659
 public class 구간합구하기4 {
@@ -35,6 +37,10 @@ public class 구간합구하기4 {
             j = Integer.parseInt(st.nextToken());
             System.out.println(dp[j]-dp[i-1]);
         }
+
+        HashSet<Point> sh = new HashSet<>();
+        HashMap<Integer, Integer> hm = new HashMap<>();
+        //hm.
     }
 
 }
