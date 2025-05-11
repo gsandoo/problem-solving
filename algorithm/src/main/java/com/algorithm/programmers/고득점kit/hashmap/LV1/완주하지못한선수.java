@@ -1,4 +1,4 @@
-package com.algorithm.programmers.고득점kit.LV1.hashmap;
+package com.algorithm.programmers.고득점kit.hashmap.LV1;
 
 import java.util.*;
 
