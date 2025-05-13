@@ -3,7 +3,7 @@ package com.algorithm.programmers.고득점kit.hashmap.LV1;
 
 import java.util.*;
 
-class Solution {
+class 폰켓몬 {
     public int solution(int[] nums) {
         int answer = 0;
         int divide = nums.length / 2;
