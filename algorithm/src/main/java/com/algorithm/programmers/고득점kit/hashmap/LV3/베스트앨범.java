@@ -5,38 +5,72 @@ package com.algorithm.programmers.고득점kit.hashmap.LV3;
 
 import java.util.*;
 
-class Solution {
-    public int[] solution(String[] genres, int[] plays) {
-        ArrayList<Integer> answer = new ArrayList<>();
+class 베스트앨범 {
+    class Song {
+        String genre;
+        Integer play;
+        Integer idx;
 
-        HashMap<String, Integer> num = new HashMap<>();
-        HashMap<String, HashMap<Integer, Integer>> music = new HashMap<>();
-        for(int i = 0; i < plays.length; i++) {
-            if(!num.containsKey(genres[i])) {
-                HashMap<Integer, Integer> map = new HashMap<>();
-                map.put(i, plays[i]);
-                music.put(genres[i], map);
-                num.put(genres[i], plays[i]);
-            } else {
-                music.get(genres[i]).put(i, plays[i]);
-                num.put(genres[i], num.get(genres[i]) + plays[i]);
+        public Song(String genre, Integer play, Integer idx) {
+            this.genre = genre;
+            this.play = play;
+            this.idx = idx;
+        }
+    }
+
+    public int[] solution(String[] genres, int[] plays) {
+        List<Integer> answer = new ArrayList<>();
+        HashMap<String, Integer> hm = new HashMap<>();
+
+        // 해시맵에 장르, 조회수로 저장
+        for(int i = 0 ; i< genres.length ; i++) hm.put(genres[i], hm.getOrDefault(genres[i], 0)+plays[i]);
+
+        // song 객체 저장 => 인덱스 파악
+        List<Song> songList = new ArrayList<>();
+
+        for(int i = 0 ; i < genres.length ; i++) songList.add(new Song(genres[i], plays[i], i));
+
+
+        // 장르가 1개일 때
+        if (genres.length < 2) {
+            answer.add(songList.get(0).idx);
+            return answer.stream().mapToInt(Integer::intValue).toArray();
+        }
+
+        // 재생 횟 수 큰 장르 파악하기
+        // pop : 3150 , classic : 1550
+        List<Map.Entry<String, Integer>> genreList = new ArrayList<>(hm.entrySet());
+        genreList.sort((a, b) -> b.getValue() - a.getValue());
+
+        // SongList를 sorting 하기
+        songList.sort((a, b) -> {
+            if (a.play.equals(b.play)) return a.idx - b.idx;
+            return b.play - a.play;
+        });
+
+        // songList ->  장르와 재생 수가 같으면 idx 오름차순, 장르만 같으면 재생 수 내림차 순 ,아니면 정렬 x
+        // [{classic,800,3}, {classic, 500,0}, {classic, 150,2}, {pop, 2500, 4},{pop, 600, 1}]
+        // genreList -> (pop : 3150), (classic:1550) ...
+
+        // songList에서 필터링해서 2곡 씩 남기기
+        for (Map.Entry<String,Integer> genre : genreList) {
+            int count = 0;
+            for (Song song : songList) {
+                if (song.genre.equals(genre.getKey())) {
+                    answer.add(song.idx);
+                    count++;
+                    if (count == 2) break;
+                }
             }
         }
 
-        List<String> keySet = new ArrayList(num.keySet());
-        Collections.sort(keySet, (s1, s2) -> num.get(s2) - (num.get(s1)));
+        return answer.stream().mapToInt(Integer::intValue).toArray();
+    }
 
-        for(String key : keySet) {
-            HashMap<Integer, Integer> map = music.get(key);
-            List<Integer> genre_key = new ArrayList(map.keySet());
-
-            Collections.sort(genre_key, (s1, s2) -> map.get(s2) - (map.get(s1)));
-
-            answer.add(genre_key.get(0));
-            if(genre_key.size() > 1)
-                answer.add(genre_key.get(1));
-        }
-
-        return answer.stream().mapToInt(i -> i).toArray();
+    public static void main(String[] args) {
+        베스트앨범 b = new 베스트앨범();
+        String[] genre = {"classic", "pop", "classic", "classic", "pop"};
+        int[] plays = {500, 600, 150, 800, 2500};
+        System.out.println(b.solution(genre, plays));
     }
 }
