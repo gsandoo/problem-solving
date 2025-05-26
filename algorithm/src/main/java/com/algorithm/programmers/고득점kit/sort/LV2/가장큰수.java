@@ -2,7 +2,7 @@ package com.algorithm.programmers.고득점kit.sort.LV2;
 
 import java.util.Arrays;
 
-class 입국심사 {
+class 가장큰수 {
     public String solution(int[] numbers) {
         String[] stringArr = new String[numbers.length];
 
