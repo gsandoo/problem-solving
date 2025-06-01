@@ -23,15 +23,15 @@ class 기차가어둠을헤치고은하수를 {
 
             if (cmd == 1) {
                 int seat = Integer.parseInt(st.nextToken()) - 1;
-                train[trainNum] |= (1 << seat);
+                train[trainNum] |= (1 << seat); // 승차
             } else if (cmd == 2) {
                 int seat = Integer.parseInt(st.nextToken()) - 1;
-                train[trainNum] &= ~(1 << seat);
+                train[trainNum] &= ~(1 << seat); // 하차
             } else if (cmd == 3) {
-                train[trainNum] <<= 1;
+                train[trainNum] <<= 1; // 뒤로 앉기
                 train[trainNum] &= ~(1 << 20);
             } else if (cmd == 4) {
-                train[trainNum] >>= 1;
+                train[trainNum] >>= 1; // 앞으로 땡겨 앉기
             }
         }
 
