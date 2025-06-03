@@ -7,6 +7,8 @@ public class 어두운굴다리 {
     static int N, M;
     static int[] lights;
 
+    static int[][] na = {{1,2,3}, {2,5}, {3,2,1}};
+
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         N = Integer.parseInt(br.readLine()); // 굴다리 길이
