@@ -38,16 +38,11 @@ public class 소수찾기 {
 
 
 
-    static boolean isPrime(int x){
-        if (x < 2) {
-            return false;
+    static boolean isPrime(int n) {
+        if (n < 2) return false;
+        for(int i = 2 ; i <= (int)Math.sqrt(n); i++){
+            if (n % i == 0) return false;
         }
-        for (int i = 2; i <= (int) Math.sqrt(x); i++) {
-            if (x % i == 0) {
-                return false;
-            }
-        }
-
         return true;
     }
 
