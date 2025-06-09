@@ -1,3 +1,4 @@
+# 11720
 N = int(input())
 numbers = list(input())
 sum = 0 
