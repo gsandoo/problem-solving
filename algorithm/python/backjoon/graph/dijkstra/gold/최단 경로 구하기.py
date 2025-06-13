@@ -28,9 +28,9 @@ while q.qsize() > 0 :
         continue
     visited[c_v] = True
     for tmp in a[c_v]: # 인접 리스트에서 꺼내는 노드들
-        nxt = tmp[0]
-        val = tmp[1]
-        if dist[nxt] > dist[c_v] + val:
+        nxt = tmp[0] # 다음 노드
+        val = tmp[1] # 가중치
+        if dist[nxt] > dist[c_v] + val: # 다음 노드까지의 거리 > 시작~현재 노드까지 거리+ 현재~다음 노드까지 거리
             dist[nxt] = dist[c_v] + val
         # 정렬 기준이 가중치 이므로 순서를 가중치, 목표 노드 순으로 우선순위 큐 설정
         q.put((dist[nxt], nxt))
