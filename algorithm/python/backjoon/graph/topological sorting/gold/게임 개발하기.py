@@ -2,12 +2,12 @@ from collections import deque
 
 n = int(input())
 a = [[] for _ in range (n + 1)]
-indegree = [0] * (n+1)
-selfbuild = [0] * (n+1)
+indegree = [0] * (n+1) # 진입 차수 리스트
+selfbuild = [0] * (n+1) # 건물 생산 시간 리스트
 
 for i in range(1, n+1):
-    inputList = list(map(int, input().split()))
-    selfbuild[i] = (inputList[0])
+    inputList = list(map(int, input().split())) # 10 1 -1
+    selfbuild[i] = (inputList[0]) # 10
     idx = 1
     while True:
         preTmp = inputList[idx]
