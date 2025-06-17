@@ -38,7 +38,7 @@ def changeVal(idx , val): # 10 6
         tree[idx] = tree[idx] + diff # 3 + 3 = 6 -> 시작점 + 3 번의 노드를 6의 값으로 바꿔라
         idx = idx // 2
 
-# 질의값 구하는 함수(여기선 구간합)        
+# 질의값 구하는 함수(여기선 구간합) 암기 필수 !!!       
 def getSum(s,e):
     partSum = 0 
     while s <= e: # end_index < start_index가 될때까지
