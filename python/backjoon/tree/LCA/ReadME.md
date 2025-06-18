@@ -16,6 +16,19 @@
     - visited 처리
     - level(트리 깊이), now_size(현재 깊이에서 트리 크기), count 정의
     - for 문 -> 미방문시 큐에 넣고 방문처리
-    - 부모 배열에 부모 노드 저장
-    - count +=1 , 
+    > 부모 배열에 부모 노드 저장
+    > 뎁스 배열[next]에 level 저장
+    > count +=1 , 
+    > count == tree_size이면(레벨 다 돌면)
+    > count = 0 , tree_size = len(queue) , level += 1 
+3. LCA 구현
+    - a < b 면:
+    > a,b = b,a (a 값을 항상 더 깊은 뎁스를 가지는 노드로)
+    - depth[a] < depth[b]면:
+    > a = parent[a]  (a노드를 이전 레벨)
+    - depth[a] != depth[b]면: (두 노드가 레벨은 같은데 부모 노드가 다르면 둘 다 이전 레벨)
+    > a = parent[a] 
+    > b = parent[b]
+    - 리턴 a
+      
 
