@@ -14,39 +14,47 @@ from collections import deque
 def solutions(grid, commands):
     n = len(grid)
     m = len(grid[0][0])
+    grid = [row[0] for row in grid]
     answer = [[0] * m for _ in range(n)]
-    
-    q = deque()
-    
+
     directions = [
-        [(-1,0),(0,1)],
-        [(0,1),(1,0)],
-        [(1,0),(0,-1)],
-        [(0,-1),(-1,0)]
+        [(-1, 0), (0, 1)],  # ↑ →
+        [(0, 1), (1, 0)],  # → ↓
+        [(1, 0), (0, -1)], # ↓ ←
+        [(0, -1), (-1, 0)] # ← ↑
     ]
-    
-    
-    for idx, (r,c,d,a) in enumerate(commands):
-        # 1 indexed -> 0 indexed 
-        r -= 1 
-        c -= 1 
-        
-        visited = [[False] * m for _ in range(n)]
-        
-        q.append((r,c,0))
-        visited[r][c] = True
-        answer[r][c] = idx+1
-        
+
+    for idx, (r, c, d, a) in enumerate(commands):
+        r -= 1
+        c -= 1
+
+        visited = [[-1] * m for _ in range(n)]  # step 기반 방문 기록
+        q = deque()
+        q.append((r, c, 0))
+        visited[r][c] = 0
+        answer[r][c] = idx + 1
+
         while q:
-            x, y , step = q.popleft()
+            x, y, step = q.popleft()
             if step >= a:
                 continue
+
             for dx, dy in directions[d]:
                 nx = x + dx
                 ny = y + dy
-                if nx >=0 and nx < n and ny >= 0 and ny < m and visited[nx][ny] == False and grid[nx][ny] == '.':
-                    visited[nx][ny] = True
-                    step += 1 
-                    answer[nx][ny] = idx + 1
-                    q.append((nx, ny, step))
-        
+                if 0 <= nx < n and 0 <= ny < m:
+                    if grid[nx][ny] == '.' and (visited[nx][ny] == -1 or visited[nx][ny] > step + 1):
+                        visited[nx][ny] = step + 1
+                        answer[nx][ny] = idx + 1
+                        q.append((nx, ny, step + 1))
+
+    return answer
+
+
+
+grid = [["...#.."], [".#...#"], ["..#..."], ["##...."], ["....#."], ["......"]]
+commands = [[2,4,0,3], [3,5,2,2], [4,3,1,4], [6,3,3,6]]
+
+result = solutions(grid, commands)
+for row in result:
+    print(row)
