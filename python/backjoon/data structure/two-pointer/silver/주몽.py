@@ -11,24 +11,17 @@ a.sort()
 
 count =0
 start = 0
-end =  len(a)-1
-sum = a[start]+ a[end]
+end =  n-1
 
 # 1 2 3 4 5 7
 while start < end:
-    if sum == m:
-        count+=1
-        sum -= a[start]
-        start += 1
-        sum += a[start]
-    elif sum > m:
-        sum -= a[end]
-        end -=1
-        sum += a[end]
+    if a[start] + a[end] > m:
+        end-=1
+    elif a[start] + a[end] < m:
+        start +=1
     else:
-        sum -= a[start]
-        start += 1
-        sum += a[start]
-
+        count+=1
+        start +=1
+        end -=1
 print(count)
         
