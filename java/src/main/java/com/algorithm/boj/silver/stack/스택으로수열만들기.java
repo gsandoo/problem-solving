@@ -20,12 +20,12 @@ public class 스택으로수열만들기 {
         int idx = 0;
 
         while (idx < n) {
-
+            // 스택에 push
             while (num <= sequence[idx]) {
                 stack.push(num++);
                 sb.append("+\n");
             }
-
+            // 스택에서 pop
             if (stack.peek() == sequence[idx]) {
                 stack.pop();
                 sb.append("-\n");
