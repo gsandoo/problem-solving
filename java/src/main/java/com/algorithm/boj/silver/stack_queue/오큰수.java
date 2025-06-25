@@ -1,4 +1,4 @@
-package com.algorithm.boj.silver.stack;
+package com.algorithm.boj.silver.stack_queue;
 
 import java.io.*;
 import java.util.*;
