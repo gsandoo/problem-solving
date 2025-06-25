@@ -15,8 +15,8 @@ public class 절댓값힙 {
                 ((o1, o2) -> {
                     int ma = Math.abs(o1);
                     int mb = Math.abs(o2);
-                    if (ma == mb) return Integer.compare(ma,mb);
-                    return Integer.compare(ma,mb);
+                    if (ma == mb) return Integer.compare(o1,o2); // 1 , -1 일 경우 -1 먼저
+                    return Integer.compare(ma,mb); // 절댓 값이 작은 순대로
                 }));
 
         StringBuilder sb = new StringBuilder();
