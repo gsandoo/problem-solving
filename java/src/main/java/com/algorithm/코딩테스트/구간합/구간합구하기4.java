@@ -1,4 +1,4 @@
-package com.algorithm.boj.silver;
+package com.algorithm.코딩테스트.구간합;
 
 import java.io.*;
 import java.util.*;

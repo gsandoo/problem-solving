@@ -1,4 +1,4 @@
-package com.algorithm.boj.silver.이분탐색;
+package com.algorithm.코딩테스트.이분탐색;
 
 import java.io.BufferedReader;
 import java.io.IOException;
