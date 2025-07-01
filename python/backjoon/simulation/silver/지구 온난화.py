@@ -55,5 +55,5 @@ size = list(minigrid())
 
 # 출력
 for i in range(size[0], size[1]+1):
-        print(''.join(new_grid[i][size[2]:size[3] + 1]))
+        print(''.join(new_grid[i][size[2]:size[3] + 1])) # ['X', 'X', '.', '.', '.', 'X'] -> 'XX...X'
     
