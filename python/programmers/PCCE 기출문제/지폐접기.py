@@ -9,4 +9,5 @@ def solution(wallet, bill):
         else : 
             bill[1] = math.floor(bill[1]//2) 
         answer += 1
+        
     return answer
