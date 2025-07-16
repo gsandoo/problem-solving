@@ -16,7 +16,6 @@ def solution(mats, park):
                     dp[i][j] = min(dp[i-1][j], dp[i][j-1], dp[i-1][j-1]) + 1 # 최대 정사각형을 만드는 핵심 규칙
                 m = max(m , dp [i][j])
                                 
-
     mats.sort()
     for i in reversed(mats):
         if m >= i:
