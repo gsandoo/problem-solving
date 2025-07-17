@@ -1,48 +1,49 @@
 from collections import Counter
 
 def solution(points, routes):
-    # 각 로봇의 전체 경로를 시간순으로 저장
-    robot_paths = []
+    answer = 0
+    
+    path = []
     
     for route in routes:
-        path = []
-        
-        # 첫 번째 지점부터 시작
-        for i in range(len(route) - 1):
-            start_r, start_c = points[route[i] - 1]
-            end_r, end_c = points[route[i + 1] - 1]
-            
-            # 현재 위치 (첫 번째 구간이 아니라면 시작점 제외)
-            if i == 0:
-                path.append((start_r, start_c))
-            
-            # r 방향 먼저 이동
-            if start_r < end_r:
+        p = []
+        for i in range(len(route)-1):
+            start_r, start_c = points[route[i]-1]
+            end_r, end_c = points[route[i+1]-1]
+
+            if i == 0 : 
+                p.append((start_r,start_c))
+                
+            # r 방향 이동
+            if start_r < end_r : 
                 for r in range(start_r + 1, end_r + 1):
-                    path.append((r, start_c))
-            elif start_r > end_r:
-                for r in range(start_r - 1, end_r - 1, -1):
-                    path.append((r, start_c))
+                    p.append((r, start_c))
+            elif start_r > end_r : 
+                for r in range(start_r -1 , end_r -1, -1) : 
+                    p.append((r, start_c))
             
             # c 방향 이동
-            if start_c < end_c:
+            if start_c < end_c : 
                 for c in range(start_c + 1, end_c + 1):
-                    path.append((end_r, c))
-            elif start_c > end_c:
-                for c in range(start_c - 1, end_c - 1, -1):
-                    path.append((end_r, c))
+                    p.append((end_r, c))
+            elif start_c > end_c :
+                for c in range(start_c - 1, end_c -1 , -1) :
+                    p.append((end_r, c))
+                    
+            path.append(p)
         
-        robot_paths.append(path)
-    
-    # 충돌 위험 계산
-    collision_count = 0
-    max_time = max(len(path) for path in robot_paths)
-    
-    for time in range(max_time):
-        # 현재 시간에 각 로봇의 위치 수집
-        positions = [path[time] for path in robot_paths if time < len(path)]
+        # 충돌 위험 계산
+        max_time = max(len(p) for p in path)
         
-        # 2개 이상 로봇이 있는 위치의 개수 계산
-        collision_count += sum(1 for count in Counter(positions).values() if count >= 2)
-    
-    return collision_count
+        # 최대 이동하는 로봇의 길이만큼 = 모든 로봇이 종착지까지 이동할때까지
+        for time in range(max_time) :
+            positions = [p[time] for p in path if time < len(p)]
+            
+            answer += sum(1 for count in Counter(positions).values() if count >= 2)
+                    
+    return answer
+
+
+points = [[3, 2], [6, 4], [4, 7], [1, 4]]
+routes = [[4, 2], [1, 3], [2, 4]]	
+print(solution(points, routes))
