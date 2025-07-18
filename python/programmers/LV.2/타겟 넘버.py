@@ -17,8 +17,3 @@ def solution(numbers, target):
     
 
     return answer
-
-
-num = [1, 1, 1, 1, 1]	
-target = 3
-print(solution(num, target))
