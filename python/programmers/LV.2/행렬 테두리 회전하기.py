@@ -1,11 +1,5 @@
 # https://school.programmers.co.kr/learn/courses/30/lessons/77485?language=python3
 
-# 2,2,5,4 -> 3,3, 4,3
-# 3,3,6,6 -> 4,4, 4,5, 5,4, 5,5
-
-
-# (1,1), (1,2) , (1,3), (2,3), (3,3), (4,3) , (4,2) (4,1) (3,1) (2,1)
-
 def solution(rows, columns, queries):
     answer = []
     
@@ -52,8 +46,3 @@ def solution(rows, columns, queries):
     
         answer.append(m)
     return answer
-
-r = 3
-c = 3
-q = [[1,1,2,2],[1,2,2,3],[2,1,3,2],[2,2,3,3]]
-print(solution(r,c,q))
