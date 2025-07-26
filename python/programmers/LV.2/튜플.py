@@ -11,7 +11,7 @@ def solution(s):
     arr.sort(key = len)
     
     st = set()
-    for a in arr : # [[2], [2,1], [2,1,3]...]
+    for a in arr :
         for i in a : 
             if i not in st:
                 st.add(i)
