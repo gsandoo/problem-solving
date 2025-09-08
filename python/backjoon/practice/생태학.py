@@ -1,4 +1,5 @@
 # https://www.acmicpc.net/problem/4358
+# 핵심 키워드 : 포맷팅, OrderedDict
 import sys
 from collections import defaultdict, OrderedDict
 
